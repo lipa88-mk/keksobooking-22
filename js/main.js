@@ -8,8 +8,7 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
 }
-
-
+console.log(getRandomInt(1, 10));
 /*
 * Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно.
 *  имя_функции(от, до, количество_знаков_после_запятой);
@@ -17,5 +16,4 @@ function getRandomInt(min, max) {
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
-
-console.log(getRandomArbitrary(0, 10));
+console.log(getRandomArbitrary(1,3));

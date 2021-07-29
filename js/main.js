@@ -13,7 +13,7 @@ getRandomInt(1, 10);
 * Функция, возвращающая случайное число с плавающей точкой из переданного диапазона включительно.
 *  имя_функции(от, до, количество_знаков_после_запятой);
 */
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+function getRandomArbitrary(min, max, length) {
+  return Number((Math.random() * (max - min) + min).toFixed(length));
 }
-getRandomArbitrary(1,3);
+getRandomArbitrary(0,3, 5);

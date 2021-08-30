@@ -2,5 +2,6 @@
 //window.console.log(AUTHORS);
 
 import './mockup.js';
+import './form.js';
 
 

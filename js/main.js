@@ -1,4 +1,6 @@
-import {AUTHORS} from './author-data.js';
+//import {AUTHORS} from './author-data.js';
+//window.console.log(AUTHORS);
 
-window.console.log(AUTHORS);
+import './mockup.js';
+
 

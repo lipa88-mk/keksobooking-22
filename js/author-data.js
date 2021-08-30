@@ -35,34 +35,42 @@ function getPhotosList (num) {
 }
 
 /**
+ * возвращает объект автора
+ */
+
+function createAuthor () {
+  const location_X = getRandomArbitrary(35.65000, 35.70000, 5);
+  const location_Y = getRandomArbitrary(139.70000, 139.80000, 5);
+  const author = {
+    avatar: 'img/avatars/user0'+ getRandomInt(1, 5) +'.png',
+    location: {
+      x: location_X,
+      y: location_Y,
+    },
+    offer: {
+      title: 'Заголовок предложения',
+      description: 'Описание помещения',
+      price: getRandomInt(0, 100),
+      rooms: getRandomInt(0,5),
+      guests: getRandomInt(0,20),
+      type: getRandomMasValue(TYPE_LIST),
+      checkin: getRandomMasValue(CHECK_LIST),
+      checkout: getRandomMasValue(CHECK_LIST),
+      features: getRandomMas(FEATURES_LIST),
+      photos: getPhotosList(getRandomInt(1,5)),
+      address: location_X + ', ' + location_Y,
+    },
+  };
+  return author;
+}
+
+/**
  * возвращает массив из num объектов авторов
  */
 function createAuthors (num) {
   const result = [];
   for (let i=0; i<num; i++) {
-    const location_X = getRandomArbitrary(35.65000, 35.70000, 5);
-    const location_Y = getRandomArbitrary(139.70000, 139.80000, 5);
-    const author = {
-      avatar: 'img/avatars/user0'+ getRandomInt(1, 5) +'.png',
-      location: {
-        x: location_X,
-        y: location_Y,
-      },
-      offer: {
-        title: 'Заголовок предложения',
-        description: 'Описание помещения',
-        price: getRandomInt(0, 100),
-        rooms: getRandomInt(0,5),
-        guests: getRandomInt(0,20),
-        type: getRandomMasValue(TYPE_LIST),
-        checkin: getRandomMasValue(CHECK_LIST),
-        checkout: getRandomMasValue(CHECK_LIST),
-        features: getRandomMas(FEATURES_LIST),
-        photos: getPhotosList(getRandomInt(1,5)),
-        address: location_X + ', ' + location_Y,
-      },
-    };
-    window.console.log(author);
+    const author = createAuthor();
     result.push(author);
   }
   return result;
@@ -70,4 +78,4 @@ function createAuthors (num) {
 
 const AUTHORS = createAuthors(AUTHORS_NUM);
 
-export {AUTHORS};
+export {createAuthor, AUTHORS};

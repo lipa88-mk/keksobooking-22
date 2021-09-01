@@ -32,39 +32,10 @@ typeField.addEventListener('change', function () {
 const timeinField = document.querySelector('#timein');
 const timeoutField = document.querySelector('#timeout');
 
-const compare = function (value) {
-  switch (value) {
-    case '12:00':
-      timeinField.children[0].setAttribute('selected', 'selected');
-      timeinField.children[1].removeAttribute('selected');
-      timeinField.children[2].removeAttribute('selected');
-      timeoutField.children[0].setAttribute('selected', 'selected');
-      timeoutField.children[1].removeAttribute('selected');
-      timeoutField.children[2].removeAttribute('selected');
-      break;
-    case '13:00':
-      timeinField.children[0].removeAttribute('selected');
-      timeinField.children[1].setAttribute('selected', 'selected');
-      timeinField.children[2].removeAttribute('selected');
-      timeoutField.children[0].removeAttribute('selected');
-      timeoutField.children[1].setAttribute('selected', 'selected');
-      timeoutField.children[2].removeAttribute('selected');
-      break;
-    case '14:00':
-      timeinField.children[0].removeAttribute('selected');
-      timeinField.children[1].removeAttribute('selected');
-      timeinField.children[2].setAttribute('selected', 'selected');
-      timeoutField.children[0].removeAttribute('selected');
-      timeoutField.children[1].removeAttribute('selected');
-      timeoutField.children[2].setAttribute('selected', 'selected');
-      break;
-  }
-}
-
 timeinField.addEventListener('change', function () {
-  compare(this.value);
+  timeoutField.value = this.value;
 });
 
 timeoutField.addEventListener('change', function () {
-  compare(this.value);
+  timeinField.value = this.value;
 });

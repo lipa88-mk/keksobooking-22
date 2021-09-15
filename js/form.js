@@ -39,3 +39,12 @@ timeinField.addEventListener('change', function () {
 timeoutField.addEventListener('change', function () {
   timeinField.value = this.value;
 });
+
+
+/**
+ * Адрес: ручное редактирование поля запрещено.
+ */
+
+const addressField = document.querySelector('#address');
+addressField.setAttribute('readonly', 'readonly');
+

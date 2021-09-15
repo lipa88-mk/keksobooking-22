@@ -42,7 +42,8 @@ mainPinMarker.on('moveend', (evt) => {
   // console.log(evt.target.getLatLng());
   const x = evt.target.getLatLng().lat.toFixed(5);
   const y = evt.target.getLatLng().lng.toFixed(5);
-  console.log(x, y);
+  // console.log(x, y);
+  document.querySelector('#address').value = `${x}, ${y}`;
 });
 
 // mainPinMarker.remove();

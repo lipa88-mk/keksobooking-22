@@ -7,7 +7,7 @@ const mockAuthor = createAuthor();
 const card = document.querySelector('#card').content.querySelector('.popup').cloneNode(true);
 
 // найти родителя для размещения карточки
-const container = document.querySelector('#map-canvas');
+// const container = document.querySelector('#map-canvas');
 
 const avatar = card.querySelector('.popup__avatar');
 if (mockAuthor.avatar) {avatar.setAttribute('src', mockAuthor.avatar);}
@@ -82,4 +82,4 @@ if (photosList) {
   }
 } else {photos.classList.add('hidden');}
 
-container.append(card);
+// container.append(card);

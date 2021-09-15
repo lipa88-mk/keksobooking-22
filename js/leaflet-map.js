@@ -1,8 +1,8 @@
 import {activePageState} from './page-state.js';
+import {AUTHORS} from './author-data.js';
 
 const map = L.map('map-canvas')
-  .on('load', () => {
-    // console.log('Карта инициализирована');
+  .on('load', () => { // при загрузке карты страинца активна
     activePageState();
   })
   .setView({
@@ -39,11 +39,36 @@ const mainPinMarker = L.marker(
 mainPinMarker.addTo(map);
 
 mainPinMarker.on('moveend', (evt) => {
-  // console.log(evt.target.getLatLng());
   const x = evt.target.getLatLng().lat.toFixed(5);
   const y = evt.target.getLatLng().lng.toFixed(5);
-  // console.log(x, y);
   document.querySelector('#address').value = `${x}, ${y}`;
 });
 
 // mainPinMarker.remove();
+
+
+// метки mock-объявлений
+// метка
+const cardPinIcon = L.icon({
+  iconUrl: '../img/pin.svg',
+  iconSize: [52, 52],
+  iconAnchor: [26, 52],
+});
+
+const cards = AUTHORS;
+console.log(cards);
+
+cards.forEach((card) => {
+  const lat = card.location.x;
+  const lng = card.location.y;
+
+  const marker = L.marker({
+    lat,
+    lng,
+  },
+  {
+    icon: cardPinIcon,
+  });
+
+  marker.addTo(map);
+});

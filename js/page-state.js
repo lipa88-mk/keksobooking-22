@@ -5,7 +5,8 @@
 /**
  * Форма заполнения информации об объявлении .ad-form содержит класс ad-form--disabled;
  */
-document.querySelector('.ad-form').classList.add('ad-form--disabled');
+const adForm = document.querySelector('.ad-form');
+adForm.classList.add('ad-form--disabled');
 
 
 /**
@@ -23,11 +24,34 @@ adFormFieldsets.forEach(fieldset => {
 * на форму добавлен специальный класс, а на её интерактивные элементы атрибуты disabled;
 */
 
-document.querySelector('.map__filters').classList.add('map__filters--disabled');
+const mapFilters = document.querySelector('.map__filters');
+mapFilters.classList.add('map__filters--disabled');
 // селекты
 const mapFormSelects = document.querySelectorAll('.map__filters select');
 mapFormSelects.forEach(fieldset => {
   fieldset.setAttribute('disabled', 'disabled');
 });
 // филдсет с инпутами
-document.querySelector('.map__features').setAttribute('disabled', 'disabled');
+const mapFeatures = document.querySelector('.map__features');
+mapFeatures.setAttribute('disabled', 'disabled');
+
+
+/**
+ *  1.2. Активное состояние.
+ * */
+
+const activePageState = () => {
+  // форма
+  adForm.classList.remove('ad-form--disabled');
+  adFormFieldsets.forEach(fieldset => {
+    fieldset.removeAttribute('disabled');
+  });
+  // фильтры
+  mapFilters.classList.remove('map__filters--disabled');
+  mapFormSelects.forEach(fieldset => {
+    fieldset.removeAttribute('disabled');
+  });
+  mapFeatures.removeAttribute('disabled');
+};
+
+export {activePageState};

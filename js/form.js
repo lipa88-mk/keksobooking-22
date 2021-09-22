@@ -66,7 +66,55 @@ titleElement.addEventListener('input', () => {
   titleElement.reportValidity();
 });
 
+/**
+ * Поле «Количество комнат» синхронизировано с полем «Количество мест» таким образом,
+ * что при выборе количества комнат вводятся ограничения на допустимые варианты выбора
+ * количества гостей:
+1 комната — 1 «для 1 гостя»;
+2 комнаты — 2 «для 2 гостей» или «для 1 гостя»;
+3 комнаты — 3 «для 3 гостей», «для 2 гостей» или «для 1 гостя»;
+100 комнат — 0 «не для гостей».
+ */
 
+const roomsNumberField = document.querySelector('#room_number'); // число комнат
+const capacityField = document.querySelector('#capacity'); // число гостей
+const forOneGuestOption = capacityField.querySelector('option[value = "1"]');
+const forTwoGuestOption = capacityField.querySelector('option[value = "2"]');
+const forThreeGuestOption = capacityField.querySelector('option[value = "3"]');
+const forZeroGuestOption = capacityField.querySelector('option[value = "0"]');
+
+roomsNumberField.addEventListener('change', () => {
+  switch (roomsNumberField.value) {
+    case '1':
+      forOneGuestOption.removeAttribute('disabled');
+      forTwoGuestOption.setAttribute('disabled', 'disabled');
+      forThreeGuestOption.setAttribute('disabled', 'disabled');
+      forZeroGuestOption.setAttribute('disabled', 'disabled');
+      capacityField.value = '1';
+      break;
+    case '2':
+      forOneGuestOption.removeAttribute('disabled');
+      forTwoGuestOption.removeAttribute('disabled');
+      forThreeGuestOption.setAttribute('disabled', 'disabled');
+      forZeroGuestOption.setAttribute('disabled', 'disabled');
+      capacityField.value = '1';
+      break;
+    case '3':
+      forOneGuestOption.removeAttribute('disabled');
+      forTwoGuestOption.removeAttribute('disabled');
+      forThreeGuestOption.removeAttribute('disabled');
+      forZeroGuestOption.setAttribute('disabled', 'disabled');
+      capacityField.value = '1';
+      break;
+    case '100':
+      forOneGuestOption.setAttribute('disabled', 'disabled');
+      forTwoGuestOption.setAttribute('disabled', 'disabled');
+      forThreeGuestOption.setAttribute('disabled', 'disabled');
+      forZeroGuestOption.removeAttribute('disabled');
+      capacityField.value = '0';
+      break;
+  }
+});
 
 
 /**

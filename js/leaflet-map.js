@@ -1,13 +1,16 @@
 import {activePageState} from './page-state.js';
 import {AUTHORS} from './author-data.js';
+const LAT_TOKIO = 35.67963;
+const LNG_TOKIO = 139.77379;
 
 const map = L.map('map-canvas')
   .on('load', () => { // при загрузке карты страинца активна
     activePageState();
+    document.querySelector('#address').value = `${LAT_TOKIO}, ${LNG_TOKIO}`;
   })
   .setView({
-    lat: 35.67963,
-    lng: 139.77379,
+    lat: LAT_TOKIO,
+    lng: LNG_TOKIO,
   }, 12);
 
 L.tileLayer(

@@ -48,3 +48,36 @@ timeoutField.addEventListener('change', function () {
 const addressField = document.querySelector('#address');
 addressField.setAttribute('readonly', 'readonly');
 
+/**
+ * Заголовок объявления: Минимальная длина — 30 символов;
+ * Валидация во время ввода
+ */
+
+const titleElement = document.querySelector('#title');
+const MIN_TITLE_LENGTH = 30;
+
+titleElement.addEventListener('input', () => {
+  const valueLength = titleElement.value.length;
+  if (valueLength < MIN_TITLE_LENGTH) {
+    titleElement.setCustomValidity('Еще '+  (MIN_TITLE_LENGTH - valueLength) +' символов');
+  } else {
+    titleElement.setCustomValidity('');
+  }
+  titleElement.reportValidity();
+});
+
+
+
+
+/**
+ * В форме подачи объявления показывается
+ * превью аватарки пользователя и фотографии помещения
+ * при изменении значений соответствующих полей.
+ */
+
+// const avatarField = document.querySelector('#avatar');
+// const avatarPreviewImg = document.querySelector('.ad-form-header__preview img');
+
+// avatarField.addEventListener('input', () => {
+//   avatarPreviewImg.setAttribute('src', avatarField.value);
+// });

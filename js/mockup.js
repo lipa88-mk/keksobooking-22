@@ -1,4 +1,4 @@
-import {createAuthor} from './author-data.js';
+// import {createAuthor} from './author-data.js';
 
 // создание 1 мокового объявления
 // const mockAuthor = createAuthor();
